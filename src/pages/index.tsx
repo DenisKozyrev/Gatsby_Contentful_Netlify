@@ -1,44 +1,45 @@
 import React from "react";
-import { PageProps, graphql, Link } from "gatsby";
+import { PageProps, graphql } from "gatsby";
+import Img, { FluidObject } from "gatsby-image";
 import styled from "styled-components";
 import { Layout } from "../components/layout";
 
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  max-width: 490px;
+  max-width: 900px;
   flex-direction: column;
   align-items: center;
   text-align: center;
   margin-top: 140px;
 `;
 
-const Title = styled.h1`
-  font-size: 80px;
+const SubTitle = styled.h4`
+  max-width: 600px;
   color: #1c4587;
-  margin-bottom: 40px;
+  font-size: 70px;
 `;
 
-const SubTitle = styled.h4`
-  color: #1c4587;
-  font-size: 50px;
+const StyledImage = styled(Img)<any>`
+  width: 100%;
+  margin-bottom: 100px;
 `;
 
 interface DataProps {
   contentfulHomePage: {
-    title: string;
+    image: { fluid: FluidObject | FluidObject[] };
     subTitle: string;
   };
 }
 
 const HomePage: React.FC<PageProps<DataProps>> = ({
   data: {
-    contentfulHomePage: { title, subTitle },
+    contentfulHomePage: { image, subTitle },
   },
 }) => (
   <Layout backgroundColor="#d7e2ec">
     <Wrapper>
-      <Title>{title}</Title>
+      <StyledImage fluid={image.fluid} />
       <SubTitle>{subTitle}</SubTitle>
     </Wrapper>
   </Layout>
@@ -51,6 +52,11 @@ export const query = graphql`
     contentfulHomePage {
       title
       subTitle
+      image {
+        fluid(quality: 100) {
+          ...GatsbyContentfulFluid
+        }
+      }
     }
   }
 `;
