@@ -31,7 +31,7 @@ interface DataProps {
   };
 }
 
-const HomePage: React.FC<PageProps<DataProps>> = ({
+const AboutMePage: React.FC<PageProps<DataProps>> = ({
   data: {
     contentfulHomePage: { title, subTitle },
   },
@@ -44,7 +44,7 @@ const HomePage: React.FC<PageProps<DataProps>> = ({
   </Layout>
 );
 
-export default HomePage;
+export default AboutMePage;
 
 export const query = graphql`
   {
