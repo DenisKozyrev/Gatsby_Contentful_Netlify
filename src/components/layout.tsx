@@ -50,7 +50,7 @@ const Layout = ({ children, backgroundColor }: LayoutProps) => (
     <Navigation>
       <LinkWrapper>
         <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/about-me">About Me</StyledLink>
+        {/* <StyledLink to="/about-me">About Me</StyledLink> */}
         <StyledLink to="/meetup-plan">Meetup Plan</StyledLink>
         <StyledLink to="/additional-sources">Additional Sources</StyledLink>
       </LinkWrapper>
